@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic'])
       templateUrl: "templates/tabs.html"
     })
 
-    // the pet tab has its own child nav-view and history
+    // the party tab has its own child nav-view and history
     .state('tab.party-index', {
       url: '/party',
       views: {
@@ -37,7 +37,8 @@ angular.module('starter', ['ionic'])
       url: '/map',
       views: {
         'map-tab': {
-          templateUrl: 'templates/map.html'
+          templateUrl: 'templates/map.html',
+          controller: 'MapCtrl'
         }
       }
     });
