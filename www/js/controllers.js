@@ -1,8 +1,10 @@
 angular.module('starter.controllers', [])
 
-    .controller('MapCtrl', function($scope, $ionicLoading) {
-        console.log('MapCtrl');
-        google.maps.event.addDomListener(window, 'load', function() {
+    .controller('MapCtrl', function($scope) {
+
+        google.maps.event.addDomListener(window, 'load', function(e) {
+            console.log("loo");
+            e.preventDefault;
             var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
 
             var mapOptions = {
@@ -12,7 +14,7 @@ angular.module('starter.controllers', [])
             };
 
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+            console.log("loo");
             navigator.geolocation.getCurrentPosition(function(pos) {
                 map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
                 var myLocation = new google.maps.Marker({

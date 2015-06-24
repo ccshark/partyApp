@@ -7,44 +7,44 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
+    .config(function($stateProvider, $urlRouterProvider) {
 
-.config(function($stateProvider, $urlRouterProvider) {
+        // Ionic uses AngularUI Router which uses the concept of states
+        // Learn more here: https://github.com/angular-ui/ui-router
+        // Set up the various states which the app can be in.
+        // Each state's controller can be found in controllers.js
+        $stateProvider
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+        // setup an abstract state for the tabs directive
+        .state('tab', {
+          url: "/tab",
+          abstract: true,
+          templateUrl: "templates/tabs.html"
+        })
 
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
-    })
+        // the party tab has its own child nav-view and history
+        .state('tab.party-index', {
+          url: '/party',
+          views: {
+            'party-tab': {
+              templateUrl: 'templates/party-index.html'
+            }
+          }
+        })
 
-    // the party tab has its own child nav-view and history
-    .state('tab.party-index', {
-      url: '/party',
-      views: {
-        'party-tab': {
-          templateUrl: 'templates/party-index.html'
-        }
-      }
-    })
+        // tab for the map.
+        .state('tab.map', {
+          url: '/map',
+          views: {
+            'map-tab': {
+              templateUrl: 'templates/map.html',
+              controller: 'MapCtrl'
+            }
+          }
+        });
 
-    .state('tab.map', {
-      url: '/map',
-      views: {
-        'map-tab': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
-        }
-      }
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/tab/party');
+
     });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/party');
-
-});
 
