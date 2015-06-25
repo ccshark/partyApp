@@ -5,22 +5,24 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var current = angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ngMap'])
 
-    current.run(function($ionicPlatform) {
-        $ionicPlatform.ready(function() {
-            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-            // for form inputs)
-            if(window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            }
-            if(window.StatusBar) {
-                StatusBar.styleDefault();
-            }
-        });
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
     });
+})
 
-    current.config(function($stateProvider, $urlRouterProvider) {
+
+    .config(function($stateProvider, $urlRouterProvider) {
 
         // Ionic uses AngularUI Router which uses the concept of states
         // Learn more here: https://github.com/angular-ui/ui-router
@@ -40,7 +42,8 @@ var current = angular.module('starter', ['ionic', 'starter.controllers'])
           url: '/party',
           views: {
             'party-tab': {
-              templateUrl: 'templates/party-index.html'
+              templateUrl: 'templates/party-index.html',
+			  controller: 'cameraCtrl'
             }
           }
         })
@@ -51,13 +54,13 @@ var current = angular.module('starter', ['ionic', 'starter.controllers'])
           views: {
             'map-tab': {
               templateUrl: 'templates/map.html',
-              controller: 'MapCtrl'
+			    controller: 'MapCtrl'
             }
           }
         });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/party');
+        $urlRouterProvider.otherwise('/tab/map');
 
     });
 
