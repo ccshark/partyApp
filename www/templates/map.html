@@ -1,8 +1,12 @@
 <!--
   This template loads for the 'tab.map' state (app.js)
 -->
-<ion-view title="'Map'">
+
+<ion-view view-title="Map">
     <ion-content>
-        <div id="map" data-tap-disabled="true"></div>
+        <ion-item>
+            <div id="map" data-tap-disabled="true"></div>
+            <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
+        </ion-item>
     </ion-content>
 </ion-view>

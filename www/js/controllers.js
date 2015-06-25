@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-    .controller('MapCtrl', function($scope, $ionicLoading) {
+    .controller('MapCtrl', function($scope) {
 
         function initialize() {
             console.log("check");
@@ -32,6 +32,8 @@ angular.module('starter.controllers', [])
             $scope.map = map;
         }
 
+
+       // window.addEventListener("onload", initialize);
         google.maps.event.addDomListener(window, "load", initialize);
         console.log("end");
     });
