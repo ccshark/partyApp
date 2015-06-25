@@ -17,6 +17,7 @@ var current = angular.module('starter', ['ionic', 'starter.controllers'])
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
+            //current.config();
         });
     });
 
